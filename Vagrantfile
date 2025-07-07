@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
   config.vm.box_version = "~> 20200304.0.0"
+  config.vm.boot_timeout = 600
+
  
   config.vm.network "forwarded_port", guest: 8000, host: 8000
  
@@ -29,4 +31,6 @@ Vagrant.configure("2") do |config|
       echo "alias python='python3'" >> /home/vagrant/.bash_aliases
     fi
   SHELL
+  config.vm.synced_folder ".", "/vagrant"
+  
  end
